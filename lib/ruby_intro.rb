@@ -3,33 +3,73 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  arr.inject(0) { |sum, elem| sum + elem } 
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.length == 1 then arr[0]
+  elsif arr.length == 0 then 0
+  else 
+    x = arr.max
+    arr.delete_at(arr.index(x))
+    y = arr.max
+    x + y
+  end
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  arr.combination(2).any? { |x,y|
+    x + y == n
+  }
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, " + name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  vowel = "bcdfghjklmnpqrstvxz"
+  vowel.each_char{ |alpha| 
+    if s[0] == alpha || s[0] == alpha.upcase
+      return true
+    end
+    }
+  return false
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  return false if s.empty?
+  s.each_char{ |character|
+      if character != "1" and character != "0"
+        return false
+      end}
+  if s.to_i(2) % 4 == 0
+    return true
+  end
+  false
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  attr_accessor :isbn
+  attr_accessor :price
+
+  def initialize isbn, price
+      if isbn.empty? 
+        raise ArgumentError 
+      end
+      if price <= 0 
+        raise ArgumentError 
+      end
+      @price = price
+      @isbn = isbn
+  end
+
+  def price_as_string
+      str_to_print = "$#{format("%.2f", @price)}"
+      return str_to_print
+  end
 end
