@@ -35,7 +35,7 @@ end
 def binary_multiple_of_4? s
   return false if s.empty?
   s.each_char{ |character|
-      if character != "1" and character != "0"
+      if character != "1" && character != "0"
         return false
       end}
   if s.to_i(2) % 4 == 0
@@ -51,10 +51,7 @@ class BookInStock
   attr_accessor :price
 
   def initialize isbn, price
-      if isbn.empty? 
-        raise ArgumentError 
-      end
-      if price <= 0 
+      if isbn.empty? || price <= 0 
         raise ArgumentError 
       end
       @price = price
