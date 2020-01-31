@@ -7,14 +7,7 @@ def sum arr
 end
 
 def max_2_sum arr
-  if arr.length == 1 then arr[0]
-  elsif arr.length == 0 then 0
-  else 
-    x = arr.max
-    arr.delete_at(arr.index(x))
-    y = arr.max
-    x + y
-  end
+  sum(arr.sort.last(2))
 end
 
 def sum_to_n? arr, n
